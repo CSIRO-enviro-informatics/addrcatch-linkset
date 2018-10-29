@@ -1,4 +1,4 @@
-# addressescatchments-linkset
+# Addresses/Catchments Linkset
 Links between [GNAF](linked.data.gov.au/dataset/gnaf) Addresses and [Geofabric](linked.data.gov.au/dataset/geofabric) Catchments.
 
 This is a [VoID Linkset](https://www.w3.org/TR/void/) which is a dataset containing [RDF](https://www.w3.org/2001/sw/wiki/RDF) links between other datasets. In this case, the other datasets, GNAF & Geofabric, are both LOC-I project Datasets which then makes this Linkset a LOCI=-I Linkset.
