@@ -38,6 +38,7 @@ This Linkset consists of the following files:
   * URI prefixes for the RDF data file
 * [ac-10rows.ttl](ac-10rows.ttl) - the top 10 "rows" (links) of the linkset in RDF (turtle), without header information
   * this file allows you to preview the data of the full linkset file
+  * note that this file, and the data within the ac.ttl full Linkset file, use an unusual form of turtle notation which is perfectly valid but highly compressed to save space due to the large file size. The details are given in the header.ttl file
 * [commands.sh](commands.sh) - some simple shell scripts to convert the data CSV file into RDF (turtle) and to do a few other small admin tasks
 
 
