@@ -28,8 +28,18 @@ This is an example of <a href="https://en.wikipedia.org/wiki/Reification_(comput
 This Linkset consists of the following files:
 
 * [README.md](README.md) - this file, providing an introduction to the Linkset
-* [ac.ttl](ac.ttl) - the Linkset data file. A 971MB RDF file, turtle format, encoding the total Linkset header information and data
-* 
+* [ac.ttl](ac.ttl) - the Linkset data file. A 971MB RDF file, turtle format, encoding the total Linkset header information and data.
+  * as this file is large, it is not contained within this repository but is available online at <http://gnafld.net/ac/ac.ttl>
+* [ac.csv](ac.csv) - A 432MB CSV file containing 3 columns per row: Statement ID, Address ID, Catchment ID. This is a "shortcut" file for the Linkset's data
+  * as this file is large, it is not contained within this repository but is available online at <http://gnafld.net/ac/ac.csv>
+* [header.ttl](header.ttl) - the header information of this Linkset in RDF (turtle) which includes:
+  * the Linkset metadata (title, description, contact point, date issued, date modified, creator, objectsTarget, subjectsTarget)
+  * the SpatialIntersection method metadata (label, comment, link to code repo <https://github.com/jabhay/linkset_creator>, creator and created time)
+  * URI prefixes for the RDF data file
+* [ac-10rows.ttl](ac-10rows.ttl) - the top 10 "rows" (links) of the linkset in RDF (turtle), without header information
+  * this file allows you to preview the data of the full linkset file
+* [commands.sh](commands.sh) - some simple shell scripts to convert the data CSV file into RDF (turtle) and to do a few other small admin tasks
+
 
 ## License
 The content of this API is licensed for use under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/). See the [license deed](LICENSE) all details.
