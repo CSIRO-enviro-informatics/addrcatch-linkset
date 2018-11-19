@@ -1,6 +1,9 @@
 # Addresses/Catchments Linkset
 Links between [GNAF](linked.data.gov.au/dataset/gnaf) Addresses and [Geofabric](linked.data.gov.au/dataset/geofabric) Catchments.
 
+![](ac.png)  
+**Figure 1**: A geocoded address ('+') linked to a demon catchment polygon. Eash *link* in this Linkset states a geodoced address ID, a catchment ID, the relationship type (always `geo:sfWithin`), a method used to make the link and the ID of the link itself.
+
 This is a LOC-I Project Linkset which is a specialised Dataset containing [RDF](https://www.w3.org/2001/sw/wiki/RDF) links between other LOC-I Project Linked Data Datasets. It is formulated according to the [VoID Linkset](https://www.w3.org/TR/void/) definition meaning that in addition to the actual links, some whole-of-Linkset metadata about who created the links and when is present as a dataset header.
 
 ## LOC-I Linksets's additional information
