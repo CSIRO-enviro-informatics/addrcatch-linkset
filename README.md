@@ -45,8 +45,10 @@ This Linkset consists of the following files:
 * **[commands.sh](commands.sh)** - some simple shell scripts to convert the data CSV file into RDF (turtle) and to do a few other small admin tasks
 
 
-## License
-The content of this API is licensed for use under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/). See the [license deed](LICENSE) all details.
+## Rights & License
+The content of this API is &copy; Commonwealth of Australia (Australian Bureau of Statistics).
+
+The content is licensed for use under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/). See the [license deed](LICENSE) all details.
 
 
 ## Contacts
