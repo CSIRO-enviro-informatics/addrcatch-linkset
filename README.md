@@ -4,15 +4,15 @@ Links between [GNAF](linked.data.gov.au/dataset/gnaf) Addresses and [Geofabric](
 ![](ac.png)  
 **Figure 1**: A geocoded address ('+', top layer) linked to a catchment polygon (bottom layer). Each *link* in this Linkset states a geocoded address ID, a catchment ID, the relationship type (always `geo:sfWithin`), a method used to make the link and the ID of the link itself.
 
-This is a LOC-I Project Linkset which is a specialised Dataset containing [RDF](https://www.w3.org/2001/sw/wiki/RDF) links between other LOC-I Project Linked Data Datasets. It is formulated according to the [VoID Linkset](https://www.w3.org/TR/void/) definition meaning that in addition to the actual links, some whole-of-Linkset metadata about who created the links and when is present as a dataset header.
+This is a LocI Project Linkset which is a specialised Dataset containing [RDF](https://www.w3.org/2001/sw/wiki/RDF) links between other LocI Project Linked Data Datasets. It is formulated according to the [VoID Linkset](https://www.w3.org/TR/void/) definition meaning that in addition to the actual links, some whole-of-Linkset metadata about who created the links and when is present as a dataset header.
 
-## LOC-I Linksets's additional information
+## LocI Linksets's additional information
 In addition to expected VoID Linkset information, this Linkset presents some additional per-link information. Where VoID would typically have a link of the form:
 
 ```
 <DATATASET_A_OBJECT_ID_AA> <PREDICATE_X> <DATASET_B_OBJECT_ID_BB> .
 ```
-showing that `OBJECT_AA` from `DATASET_A` is linked to `OBJECT_BB` from `DATASET_B` via the predicate `PREDICATE_X`, this Linkset, and other LOC-I Linksets has links of the form:
+showing that `OBJECT_AA` from `DATASET_A` is linked to `OBJECT_BB` from `DATASET_B` via the predicate `PREDICATE_X`, this Linkset, and other LocI Linksets has links of the form:
 
 ```
 <STATEMENT_ID_N>
@@ -43,6 +43,16 @@ This Linkset consists of the following files:
   * this file allows you to preview the data of the full linkset file
 * **[ac-10rows.csv](ac-10rows.csv)** - the top 10 "rows" (links) of the linkset in CSV format
 * **[commands.sh](commands.sh)** - some simple shell scripts to convert the data CSV file into RDF (turtle) and to do a few other small admin tasks
+
+
+## Methods
+The method used to generate each link within a Linkset is required by the LocI project's definition of a Linkset to be indicated per-link and this is done so by the `loci:hadGenerationMethod` property. Then, all methods indicated (this Linkset uses only 1) themselves need detailing. 
+
+This Linkset's sole method is described in the Linkset header as a "Spatial Intersection Method" whereby:
+
+> This method uses the G-NAF LDAPI to page through the register, obtain the GeoSPARQL geometry for the address point, and then uses a OGC Simple Features Contains filter on the GeoFabric WFS Service.
+
+The code used for this method is hoseted seperately as indicated in the header's method description at <https://github.com/jabhay/linkset_creator>.
 
 
 ## Rights & License
