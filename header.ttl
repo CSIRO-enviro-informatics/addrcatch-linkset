@@ -35,8 +35,8 @@ The triples for the main data in this linkset - the Statements relating Addresse
   dct:issued "2018-11-10"^^xsd:date ;
   dct:modified "2018-11-10"^^xsd:date ;
   dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
-  void:objectsTarget <http://linked.data.gov.au/dataset/gnaf> ;
-  void:subjectsTarget <http://linked.data.gov.au/dataset/geofabric> .
+  void:subjectsTarget <http://linked.data.gov.au/dataset/gnaf> ;
+  void:objectsTarget <http://linked.data.gov.au/dataset/geofabric> .
 
 _:jo a vcard:Individual ;
   vcard:fn "Joseph Abhayaratna" ;
