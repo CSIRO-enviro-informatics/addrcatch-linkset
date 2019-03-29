@@ -1,69 +1,151 @@
-# Addresses/Catchments Linkset
-Links between [GNAF](linked.data.gov.au/dataset/gnaf) Addresses and [Geofabric](linked.data.gov.au/dataset/geofabric) Catchments.
+# GNAF Addresses to Catchments Linkset
+This code repository contains a Linkset - a specialised Dataset linking objects in two other Datasets.
+
+This Linkset contains spatial associations between [`Address`](http://linked.data.gov.au/def/gnaf#Address) class objects in the latest version of the Geocoded National Address File (GNAF Current) and `Catchment` class objects in the [Geofabric](linked.data.gov.au/dataset/geofabric).
+
+Addresses, in the [GNAF 2016 May dataset](http://linked.data.gov.au/dataset/gnaf), are represented spatially as points. Catchments, in the [Geofabric](linked.data.gov.au/dataset/geofabric), are represented spatially as polygons. Catchments do not overlap and cover all of Australia, so any GNAF Current Address will lie within one, and only one, Catchment.
+
+The formal definition of what a Linkset is, is provided by the Location Index (LocI) project within its project ontology, see:
+
+* http://linked.data.gov.au/def/loci 
 
 ![](ac.png)  
 **Figure 1**: A geocoded address ('+', top layer) linked to a catchment polygon (bottom layer). Each *link* in this Linkset states a geocoded address ID, a catchment ID, the relationship type (always `geo:sfWithin`), a method used to make the link and the ID of the link itself.
 
-This is a LocI Project Linkset which is a specialised Dataset containing [RDF](https://www.w3.org/2001/sw/wiki/RDF) links between other LocI Project Linked Data Datasets. It is formulated according to the [VoID Linkset](https://www.w3.org/TR/void/) definition meaning that in addition to the actual links, some whole-of-Linkset metadata about who created the links and when is present as a dataset header.
 
-## LocI Linksets's additional information
-In addition to expected VoID Linkset information, this Linkset presents some additional per-link information. Where VoID would typically have a link of the form:
+## Repository Contents  
+* [data00.ttl.tar.gz](data00.ttl.tar.gz) & [data01.ttl.tar.gz](data01.ttl.tar.gz) - this Linkset’s main data files. They are compressed RDF turtle files, each less than 100MB
+* [header.ttl](header.ttl) - this Linkset’s data.ttl header information, stored separately for ease of access
+* [example-data.ttl](example-data.ttl) - 10 Statements from the Linkset for ease of access, in RDF (turtle) format, as per the main data file
+  * [example-data.csv](example-data.csv) - 10 Statements from the Linkset for ease of access, in simple CSV format
+* [README.md](README.md) - this file
+* [LICENSE](LICENSE) - the data license assigned to this Linkset’s content
+* [overview.png](overview.png) - the image above
+* [methods/](methods/) - a folder containing information (prose and code) about how this Linkset was generated
+
+
+## Purpose
+This repository contains a Linkset. [Linkset](http://linked.data.gov.au/def/loci#Linkset)s are specialised Linked Data datasets that link objects, such as Addresses or Catchments, in one Linked Data dataset to objects in another.
+
+Publishing relationships between Datasets as distinct Linksets allows for the independent management of Dataset-to-Dataset relationships.
+
+### Linksets for Spatial Relationships
+Where LocI objects across multiple datasets have spatial relationships that we wish to represent, we create Linksets with spatial (topological) relationships such as touches, within, overlaps etc. using terms formalised in the (GeoSPARQL Standard](https://www.opengeospatial.org/standards/geosparql).
+
+### Linksets for Dataset versions
+Some LocI Datasets, such as the ASGS, have multiple, independently delivered versions (the ASGS is released as a Linked Data Datasets in both [2011](http://linked.data.gov.au/dataset/asgs2011) and [2016](http://linked.data.gov.au/dataset/asgs2016) versions). Linksets can be used to link between these versions of a Dataset too. This allows for information such as correspondence tables (links between ASGS versions, published by the Australian Bureau of Statistics) to be published as Linked Data independently of any other Dataset.
+
+### This Linkset
+This Linkset - GNAF Current Addresses to Geofabric Catchments Linkset - is a spatial relations Linkset linking GNAF Current Addresses (points) to Geofabric Catchments (polygons) by indicating which Catchment each Address is within.
+
+This Linkset states, per Address and with other details, something like this:
+
+Address GAACT714845933  
+*is within*  
+Catchment 7155143  
+
+...and that this particular link was made on the 6th of February, 2015 using a Parcel Level matching method.
+
+
+## How is a Linkset’s data organised?
+Linksets include the main facts of relations between objects in two datasets - what the IDs of two objects are and how they are related - and they also include information about how links were created, such as what spatial intersection method was used to establish a topological relation. Linkset generation might have employed multiple methods to make all the object-to-object links within it so a Linkset may relate multiple methods and give the particular method used for each link.
+
+Other per-link information may be recorded too: if the links within a Linkset are generated over a significant period of time then the each link may have a created time; if different people/organisations contributed different links then each link may reference their specific contributor.
+
+### Linkset content sections
+Linksets use a highly condensed, but still (sort of) human-readable data format to include many (millions) of links. Linkset data files contain:
+
+* **A header**
+  * Basic information about the Linksets - what, who when
+  * Links to methods used in the generation of the Linkset
+* **A (long) set of Statements**
+  * One Statement per link
+  * Link type - how the two objects relate, spatially or otherwise
+  * Link metadata - time of creation (if important), method used and who created it (if known) etc.
+
+Linksets include all their information in one potentially very large file but they also include the header information in a stand-alone text file - header.ttl.
+
+They also include a few (perhaps 10) example Statements in a stand-alone text file - example-data-… .ttl (numbered as there may be many).
+
+### Linkset files
+In addition to the main Linkset data file and the header.ttl and example-data.ttl files, there are usually several other files within a Linkset, including this README file. General Linkset files include:
+
+* **data.ttl** - the main Linkset data file. 
+  * since this could be very large (1.5GB+), it is often compressed (*data.ttl.gz*) and sometimes split into parts (*data01.ttl.gz*, *data02.ttl.gz*...)
+* **header.ttl** - the Linkset’s data.ttl header information, stored separately for ease of access
+* **example-data.ttl** - a few statements (perhaps 10) from the Linkset for ease of access
+* **README.md** - this file: a description of this Linkset and general Linkset information
+* **LICENSE** - the data license assigned to this Linkset’s content
+
+This specific Linkset’s files are listed in above in Repository Content.
+
+### Linkset data format
+In its long list of statements, this Linkset expresses each link like this:
+
+* Statement 1 says:
+  * Address GAACT714845933
+  * is within
+  * Catchment 7155143
+  * Link generated via SpatialIntersection Method
+
+In RDF code  this link is expressed as:
 
 ```
-<DATATASET_A_OBJECT_ID_AA> <PREDICATE_X> <DATASET_B_OBJECT_ID_BB> .
-```
-showing that `OBJECT_AA` from `DATASET_A` is linked to `OBJECT_BB` from `DATASET_B` via the predicate `PREDICATE_X`, this Linkset, and other LocI Linksets has links of the form:
-
-```
-<STATEMENT_ID_N>
-  rdf:subject <DATATASET_A_OBJECT_ID_AA> ;
-  rdf:predicate <PREDICATE_X> ;
-  rdf:object <DATASET_B_OBJECT_ID_BB> ;
-  loci:hadGenerationMethod <METHOD_M> .
+:1 a rdf:Statement ;
+  rdf:subject:     address:GAACT714845933 ;
+  rdf:predicate: geo:sfWithin ;
+  rdf:object       catchment:7155143 ;
+  loci:hadGenerationMethod: :SpatialIntersection 
+.
 ```
 
-showing that `OBJECT_AA` is related to `OBJECT_BB` via `PREDICATE_X` but that the relation has an identifier, `STATEMENT_N` allowing it to be directly referenced and any amount of other metadata, such as a reference to the method used to generate this link, in this case `METHOD_M` indicated by the predicate `loci:hadGenerationMethod`.
+With contractions used to save data volumes resulting in:
 
-This is an example of <a href="https://en.wikipedia.org/wiki/Reification_(computer_science)#RDF_and_OWL">RDF reification</a> where a typical RDF relation of a *Subject*, *Predicate* and *Object* is described as an `rdf:Statement` class object with the *Subject*, *Predicate* and *Object* values being indicated by `rdf:subject`, `rdf:predicate` and `rdf:object` properties from the base RDF ontology and other information, such as provenance information, like the reference to the method used to generate the relation here, added to the `rdf:Statement` class just as any RDF information is added to any other class.
+```
+:1
+  s: g:GAACT714845933 ;
+  p: w: ;
+  o: b:7155143 ;
+  m: :SpatialIntersection ;
+.
+```
 
-
-## This Linkset's contents
-This Linkset consists of the following files:
-
-* **[README.md](README.md)** - this file, providing an introduction to the Linkset
-* **ac.ttl** - the Linkset data file. A 971MB RDF file, turtle format, encoding the total Linkset header information and data.
-  * as this file is large, it is not contained within this repository but is available online at <http://gnafld.net/ac/ac.ttl>
-* **ac.csv** - A 432MB CSV file containing 3 columns per row: Statement ID, Address ID, Catchment ID. This is a "shortcut" file for the Linkset's data
-  * as this file is large, it is not contained within this repository but is available online at <http://gnafld.net/ac/ac.csv>
-* **[header.ttl](header.ttl)** - the header information of this Linkset in RDF (turtle) which includes:
-  * the Linkset metadata (title, description, contact point, date issued, date modified, creator, objectsTarget, subjectsTarget)
-  * the SpatialIntersection method metadata (label, comment, link to code repo <https://github.com/jabhay/linkset_creator>, creator and created time)
-  * URI prefixes for the RDF data file
-* **[ac-10rows.ttl](ac-10rows.ttl)** - the top 10 "rows" (links) of the linkset in RDF (turtle), without header information
-  * this file allows you to preview the data of the full linkset file
-* **[ac-10rows.csv](ac-10rows.csv)** - the top 10 "rows" (links) of the linkset in CSV format
-* **[commands.sh](commands.sh)** - some simple shell scripts to convert the data CSV file into RDF (turtle) and to do a few other small admin tasks
+See the file [example-data.ttl](example-data.ttl) for the first 10 Statements of the Linkset expressed like this and see the [header.ttl](header.ttl) file to explain all the contractions.
 
 
-## Methods
-The method used to generate each link within a Linkset is required by the LocI project's definition of a Linkset to be indicated per-link and this is done so by the `loci:hadGenerationMethod` property. Then, all methods indicated (this Linkset uses only 1) themselves need detailing. 
+## Linkset metrics
+Linksets always contain similar information - links between objects in datasets - and a standard set of metrics can be calculated for any Linkset. These metrics, set by the LocI project, are:
 
-This Linkset's sole method is described in the Linkset header as a "Spatial Intersection Method" whereby:
+* Number of links
+* Number of items in Dataset A (from) not linked
+* Number of items in Dataset B (to) not linked
+* Number of link creation methods used
+* Numbers of uses of each link-creation method
 
-> This method uses the G-NAF LDAPI to page through the register, obtain the GeoSPARQL geometry for the address point, and then uses a OGC Simple Features Contains filter on the GeoFabric WFS Service.
+### Metric calculation
+A series of queries to calculate Linkset metrics is being prepared here: <https://github.com/CSIRO-enviro-informatics/linkset-metrics>
 
-The code used for this method is hoseted seperately as indicated in the header's method description at <https://github.com/jabhay/linkset_creator>.
+### This Linkset’s metrics
+**Metric** | **Value**
+-- | --
+Number of links | 14502000
+Number of items in Dataset A (from) not linked | *not yet calculated* 
+Number of items in Dataset B (to) not linked | *not yet calculated*
+Number of link creation methods used | 1 ([Spatial Intersection](http://linked.data.gov.au/linkset/addrcatch/SpatialIntersection))
+Numbers of uses of each link-creation method | 14502000
 
 
 ## Rights & License
-The content of this API is &copy; Commonwealth of Australia (Australian Bureau of Statistics).
-
-The content is licensed for use under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/). See the [license deed](LICENSE) all details.
+The content of this API is licensed for use under the [Creative Commons 4.0 License](https://creativecommons.org/licenses/by/4.0/). See the [license deed](LICENSE) all details.
 
 
 ## Contacts
-*Author*:  
+*LocI Project technical owner*:  
 **Nicholas Car**  
-*Senior Experimental Scientist*  
 CSIRO Land & Water, Environmental Informatics Group  
-<nicholas.car@csiro.au>
+<nicholas.car@csiro.au>  
+
+*Linkset creator*:  
+**Edmond Chuc**  
+CSIRO Land & Water, Environmental Informatics Group  
+<edmond.chuc@csiro.au>  
