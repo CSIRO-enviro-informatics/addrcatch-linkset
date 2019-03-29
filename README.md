@@ -146,6 +146,6 @@ CSIRO Land & Water, Environmental Informatics Group
 <nicholas.car@csiro.au>  
 
 *Linkset creator*:  
-**Edmond Chuc**  
-CSIRO Land & Water, Environmental Informatics Group  
-<edmond.chuc@csiro.au>  
+**Joesph Abhayaratna**  
+CTO, PSMA Ltd.   
+<joseph.abhayaratna@psma.com.au>  
