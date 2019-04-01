@@ -14,7 +14,7 @@ The formal definition of what a Linkset is, is provided by the Location Index (L
 
 
 ## Repository Contents  
-* [data00.ttl.tar.gz](data00.ttl.tar.gz) & [data01.ttl.tar.gz](data01.ttl.tar.gz) - this Linkset’s main data files. They are compressed RDF turtle files, each less than 100MB
+* [data00.ttl.gz](data00.ttl.gz) & [data01.ttl.gz](data01.ttl.gz) - this Linkset’s main data files. They are compressed RDF turtle files, each less than 100MB
 * [header.ttl](header.ttl) - this Linkset’s data.ttl header information, stored separately for ease of access
 * [example-data.ttl](example-data.ttl) - 10 Statements from the Linkset for ease of access, in RDF (turtle) format, as per the main data file
   * [example-data.csv](example-data.csv) - 10 Statements from the Linkset for ease of access, in simple CSV format
