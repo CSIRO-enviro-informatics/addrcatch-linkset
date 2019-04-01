@@ -1,4 +1,4 @@
-# GNAF Addresses to Catchments Linkset
+# Current Addresses to Catchments Linkset
 This code repository contains a Linkset - a specialised Dataset linking objects in two other Datasets.
 
 This Linkset contains spatial associations between [`Address`](http://linked.data.gov.au/def/gnaf#Address) class objects in the latest version of the Geocoded National Address File (GNAF Current) and `Catchment` class objects in the [Geofabric](linked.data.gov.au/dataset/geofabric).
