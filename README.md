@@ -1,7 +1,7 @@
 # Current Addresses to Catchments Linkset
 This code repository contains a Linkset - a specialised Dataset linking objects in two other Datasets.
 
-This Linkset contains spatial associations between [`Address`](http://linked.data.gov.au/def/gnaf#Address) class objects in the latest version of the Geocoded National Address File (GNAF Current) and `Catchment` class objects in the [Geofabric](linked.data.gov.au/dataset/geofabric).
+This Linkset contains spatial associations between [`Address`](http://linked.data.gov.au/def/gnaf#Address) class objects in the latest version of the Geocoded National Address File (GNAF Current) and `Catchment` class objects in the [Geofabric](http://linked.data.gov.au/dataset/geofabric).
 
 Addresses, in the [GNAF 2016 May dataset](http://linked.data.gov.au/dataset/gnaf), are represented spatially as points. Catchments, in the [Geofabric](linked.data.gov.au/dataset/geofabric), are represented spatially as polygons. Catchments do not overlap and cover all of Australia, so any GNAF Current Address will lie within one, and only one, Catchment.
 
