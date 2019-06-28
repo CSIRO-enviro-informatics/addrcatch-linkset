@@ -11,17 +11,19 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 @prefix : <http://linked.data.gov.au/linkset/bhafvq/statement/> .
+@prefix l: <http://linked.data.gov.au/linkset/bhafvq> .
 @prefix s: <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> .
 @prefix p: <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> .
 @prefix o: <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> .
 @prefix m: <http://linked.data.gov.au/def/loci/hadGenerationMethod> .
 @prefix g: <http://linked.data.gov.au/dataset/gnaf/address/> .
 @prefix w: <http://www.opengis.net/ont/geosparql#sfWithin> .
+@prefix i: <http://purl.org/dc/terms/isPartOf> .
 @prefix c: <http://linked.data.gov.au/dataset/geofabric/catchment/> .
-@prefix i: <http://linked.data.gov.au/linkset/bhafvq/SpatialIntersection> .
+@prefix pr: <http://linked.data.gov.au/linkset/bhafvq/SpatialIntersection> .
 
 
-<http://linked.data.gov.au/linkset/bhafvq> a loci:Linkset ;
+l: a loci:Linkset ;
   dct:title "Addresses Catchments Linkset" ;
   dct:description """This LOC-I Project Linkset relates Address individuals in the G-NAF LOC-I Dataset to Catchment individuals in the Geofabric LOC-I Dataset. Every Address -> Catchment relation is geosparql:sfWithin, that is the Address is sfWithin the Catchment.
 
@@ -36,19 +38,22 @@ The triples for the main data in this linkset - the Statements relating Addresse
   dct:modified "2018-11-10"^^xsd:date ;
   dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
   void:subjectsTarget <http://linked.data.gov.au/dataset/gnaf> ;
-  void:objectsTarget <http://linked.data.gov.au/dataset/geofabric> .
+  void:objectsTarget <http://linked.data.gov.au/dataset/geofabric> ;
+  m: pr: .
 
 _:jo a vcard:Individual ;
   vcard:fn "Joseph Abhayaratna" ;
   vcard:hasEmail <mailto:joseph.abhayaratna@psma.com.au> .
 
-<http://linked.data.gov.au/linkset/bhafvq/SpatialIntersection> a prov:Plan ;
+pr: a prov:Plan ;
   rdfs:label "Spatial Intersection Method" ;
   rdfs:comment "This method uses the G-NAF LDAPI to page through the register, obtain the GeoSPARQL geometry for the address point, and then uses a OGC Simple Features Contains filter on the GeoFabric WFS Service"@en ;
   prov:value <https://github.com/jabhay/linkset_creator> ;
   prov:wasAttributedTo _:jo ;
   prov:generatedAtTime "2018-11-02"^^xsd:date .
 
+
+  
 #
 # Statements
 #
