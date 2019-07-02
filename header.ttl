@@ -10,8 +10,8 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
-@prefix : <http://linked.data.gov.au/linkset/bhafvq/statement/> .
-@prefix l: <http://linked.data.gov.au/linkset/bhafvq> .
+@prefix : <http://linked.data.gov.au/dataset/addrcatch/statement/> .
+@prefix l: <http://linked.data.gov.au/dataset/addrcatch> .
 @prefix s: <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> .
 @prefix p: <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> .
 @prefix o: <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> .
@@ -20,7 +20,7 @@
 @prefix w: <http://www.opengis.net/ont/geosparql#sfWithin> .
 @prefix i: <http://purl.org/dc/terms/isPartOf> .
 @prefix c: <http://linked.data.gov.au/dataset/geofabric/catchment/> .
-@prefix pr: <http://linked.data.gov.au/linkset/bhafvq/SpatialIntersection> .
+@prefix si: <http://linked.data.gov.au/dataset/addrcatch/SpatialIntersection> .
 
 
 l: a loci:Linkset ;
@@ -39,21 +39,20 @@ The triples for the main data in this linkset - the Statements relating Addresse
   dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
   void:subjectsTarget <http://linked.data.gov.au/dataset/gnaf> ;
   void:objectsTarget <http://linked.data.gov.au/dataset/geofabric> ;
-  m: pr: .
+  void:linkPredicate w: ; 
+  m: si: .
 
 _:jo a vcard:Individual ;
   vcard:fn "Joseph Abhayaratna" ;
   vcard:hasEmail <mailto:joseph.abhayaratna@psma.com.au> .
 
-pr: a prov:Plan ;
+si: a prov:Plan ;
   rdfs:label "Spatial Intersection Method" ;
   rdfs:comment "This method uses the G-NAF LDAPI to page through the register, obtain the GeoSPARQL geometry for the address point, and then uses a OGC Simple Features Contains filter on the GeoFabric WFS Service"@en ;
   prov:value <https://github.com/jabhay/linkset_creator> ;
   prov:wasAttributedTo _:jo ;
   prov:generatedAtTime "2018-11-02"^^xsd:date .
 
-
-  
 #
 # Statements
 #
